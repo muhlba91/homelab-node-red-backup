@@ -28,6 +28,7 @@ jobs:
           command: manifest
 
   publish:
+    if: needs.release.outputs.release_created
     runs-on: ubuntu-latest
     name: Build and Publish
     needs:
@@ -60,15 +61,7 @@ jobs:
         run: |
           python -m build
 
-      - name: Publish distribution to TestPyPi
-        if: needs.release.outputs.release_created != true
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          skip-existing: true
-          repository-url: https://test.pypi.org/legacy/
-
       - name: Publish release distribution to PyPi
-        if: needs.release.outputs.release_created
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           skip-existing: true

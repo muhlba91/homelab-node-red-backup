@@ -1,9 +1,8 @@
 [build-system]
 requires = [
-    "poetry>=1.5.1",
-    "poetry-dynamic-versioning>=0.21.4"
+    "poetry-core"
 ]
-build-backend = "poetry_dynamic_versioning.backend"
+build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "homelab-node-red-backup"
@@ -40,13 +39,6 @@ requests = "^2.31.0"
 flakeheaven = "^3.2.1"
 black = "^23.1.0"
 pre-commit = "^3.1.1"
-
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "pep440"
-format-jinja = "{% if distance == 0 %}{{ base }}{% else %}{{ base }}.dev{{ distance }}{% endif %}"
-dirty = true
 
 [tool.flakeheaven]
 exclude = [
