@@ -12,7 +12,10 @@ def get_flows(endpoint: str, jwt_token: Optional[str]) -> dict:
     try:
         flows_request = requests.get(f"{endpoint}/flows/", headers=headers)
         if not flows_request.ok:
-            click.echo(f"Could not get flows from Node-RED: {flows_request.text}")
+            click.echo(
+                f"Could not get flows from Node-RED: {flows_request.status_code}, "
+                + f"{flows_request.text}"
+            )
             raise click.Abort()
         return flows_request.json()
     except Exception as err:
