@@ -7,7 +7,7 @@ build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.poetry]
 name = "homelab-node-red-backup"
-version = "1.1.0"
+version = "1.2.0"
 description = "Backup and Restore for Node-RED."
 license = "MIT"
 authors = [
