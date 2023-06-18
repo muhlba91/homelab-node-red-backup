@@ -41,11 +41,13 @@ The following credential types are recognized:
 
 ## Usage
 
-The following commands are available:
+The following commands are available, and all commands require the arguments `--endpoint`, and, optionally, `--jwt-token` set.
 
 - `check`: checks if data exists for a backup
 - `backup`: creates a backup
+  - requires: `--file`
 - `restore`: restores from a backup
+  - requires: `--file`
 
 ### Examples
 
