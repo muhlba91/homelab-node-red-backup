@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.2.0...v1.3.0) (2023-06-18)
+
+
+### Features
+
+* remove dynamic versioning and test pypi publishing ([daeced7](https://github.com/muhlba91/homelab-node-red-backup/commit/daeced72efad72999f8b7a2dbbd109d10c163f27))
+
 ## [1.2.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.1.0...v1.2.0) (2023-06-18)
 
 
