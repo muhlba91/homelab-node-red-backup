@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.3.0...v1.4.0) (2023-06-18)
+
+
+### Features
+
+* add auto mode ([5b29b18](https://github.com/muhlba91/homelab-node-red-backup/commit/5b29b1857f09962d146f41b7902cd5298e3cb95e))
+* **ci:** add build verification in pipeline ([261a50e](https://github.com/muhlba91/homelab-node-red-backup/commit/261a50ef73216e727a6e4fa427a8466b15c74d01))
+
 ## [1.3.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.2.0...v1.3.0) (2023-06-18)
 
 
