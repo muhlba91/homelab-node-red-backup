@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.4.0...v1.4.1) (2023-06-18)
+
+
+### Bug Fixes
+
+* print error codes if they happen ([7e21afc](https://github.com/muhlba91/homelab-node-red-backup/commit/7e21afc83c8e8f2b4c8c4181bbb9a66a744ee9a1))
+
 ## [1.4.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.3.0...v1.4.0) (2023-06-18)
 
 
