@@ -43,10 +43,12 @@ The following credential types are recognized:
 
 The following commands are available, and all commands require the arguments `--endpoint`, and, optionally, `--jwt-token` set.
 
-- `check`: checks if data exists for a backup
+- `check`: checks if data exists for a backup (return code `0` if data exists, else `1`)
 - `backup`: creates a backup
   - requires: `--file`
 - `restore`: restores from a backup
+  - requires: `--file`
+- `auto`: performs a `check` and either creates a backup to or restores a backup from the given `--file`
   - requires: `--file`
 
 ### Examples

@@ -7,14 +7,16 @@ import click
 CREDENTIAL_NODES = ["server", "telegram bot"]
 
 
-def create_backup(endpoint: str, jwt_token: Optional[str]) -> dict:
+def create_backup(
+    endpoint: str, jwt_token: Optional[str], flows: Optional[dict] = None
+) -> dict:
     """Creates a backup JSON."""
     try:
-        flows = get_flows(endpoint, jwt_token)
-        credentials = _get_credentials(endpoint, jwt_token, flows)
+        fetched_flows = flows if flows is not None else get_flows(endpoint, jwt_token)
+        credentials = _get_credentials(endpoint, jwt_token, fetched_flows)
         return {
-            "rev": flows["rev"],
-            "flows": flows["flows"],
+            "rev": fetched_flows["rev"],
+            "flows": fetched_flows["flows"],
             "credentials": credentials,
         }
     except Exception as error:
