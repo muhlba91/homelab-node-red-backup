@@ -1,5 +1,25 @@
 # Changelog
 
+## [1.4.2](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.4.1...v1.4.2) (2023-09-15)
+
+
+### Bug Fixes
+
+* omit rev from backup ([eda1c5e](https://github.com/muhlba91/homelab-node-red-backup/commit/eda1c5ea42d42d7162f1ebef302570587f39baa5))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v4 ([d104d9c](https://github.com/muhlba91/homelab-node-red-backup/commit/d104d9c3b26a4fc26bda66ae61c941695f70a081))
+* **deps:** update dependency black to v23.7.0 ([ed6502a](https://github.com/muhlba91/homelab-node-red-backup/commit/ed6502a8540e214097c8d90be87a5c2dd68d16e2))
+* **deps:** update dependency black to v23.9.0 ([2fb01b6](https://github.com/muhlba91/homelab-node-red-backup/commit/2fb01b6c76813c64003f0dc4d79e6a7e096f5a1e))
+* **deps:** update dependency black to v23.9.1 ([0d64aa5](https://github.com/muhlba91/homelab-node-red-backup/commit/0d64aa586c3dbba1b3ebb5b14bac07f99664b710))
+* **deps:** update dependency click to v8.1.4 ([fbf3b5b](https://github.com/muhlba91/homelab-node-red-backup/commit/fbf3b5b812ca61ff788ded5e25815776bd7781d2))
+* **deps:** update dependency click to v8.1.5 ([6c8bb6b](https://github.com/muhlba91/homelab-node-red-backup/commit/6c8bb6be4f2f3623bb4fcd19fbefde43a61f0816))
+* **deps:** update dependency click to v8.1.6 ([c729ff9](https://github.com/muhlba91/homelab-node-red-backup/commit/c729ff938149d8f407cb3692169e9be1fb2ad90e))
+* **deps:** update dependency click to v8.1.7 ([7df980e](https://github.com/muhlba91/homelab-node-red-backup/commit/7df980efd2588cdfba3a43d5a4992bdb7da3bb45))
+* **deps:** update dependency pre-commit to v3.4.0 ([d2b957a](https://github.com/muhlba91/homelab-node-red-backup/commit/d2b957a31040b7b09fb56582e312837f37554689))
+
 ## [1.4.1](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.4.0...v1.4.1) (2023-06-18)
 
 
