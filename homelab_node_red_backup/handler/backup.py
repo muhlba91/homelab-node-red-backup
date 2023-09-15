@@ -15,7 +15,6 @@ def create_backup(
         fetched_flows = flows if flows is not None else get_flows(endpoint, jwt_token)
         credentials = _get_credentials(endpoint, jwt_token, fetched_flows)
         return {
-            "rev": fetched_flows["rev"],
             "flows": fetched_flows["flows"],
             "credentials": credentials,
         }
