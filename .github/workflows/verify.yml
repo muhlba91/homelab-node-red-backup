@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Snyk
     permissions:
-      contents: read
       actions: read
+      contents: read
+      statuses: read
       security-events: write
-      statuses: write
     strategy:
       max-parallel: 4
       matrix:
