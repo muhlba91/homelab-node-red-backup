@@ -22,7 +22,7 @@ def main():
 def check(endpoint: str, jwt_token: Optional[str]):
     click.echo(
         f"Using {endpoint} to check for Node-RED configuration "
-        + f"(JWT enabled: {jwt_token != None})."
+        + f"(JWT enabled: {jwt_token is not None})."
     )
 
     checkpoint = data_exists(endpoint, jwt_token)
@@ -39,7 +39,7 @@ def check(endpoint: str, jwt_token: Optional[str]):
 def backup(endpoint: str, file: str, jwt_token: Optional[str]):
     click.echo(
         f"Using {endpoint} to backup Node-RED configuration to {file} "
-        + f"(JWT enabled: {jwt_token != None})."
+        + f"(JWT enabled: {jwt_token is not None})."
     )
 
     backup = create_backup(endpoint, jwt_token)
@@ -57,7 +57,7 @@ def backup(endpoint: str, file: str, jwt_token: Optional[str]):
 def restore(endpoint: str, file: str, jwt_token: Optional[str]):
     click.echo(
         f"Using {endpoint} to restore {file} to Node-RED "
-        + f"(JWT enabled: {jwt_token != None})."
+        + f"(JWT enabled: {jwt_token is not None})."
     )
 
     with open(file, "r") as backup:
@@ -76,7 +76,7 @@ def restore(endpoint: str, file: str, jwt_token: Optional[str]):
 def auto(endpoint: str, file: str, jwt_token: Optional[str]):
     click.echo(
         f"Using {endpoint} to auto backup/restore from/to {file} from/to Node-RED "
-        + f"(JWT enabled: {jwt_token != None})."
+        + f"(JWT enabled: {jwt_token is not None})."
     )
 
     flows = get_flows(endpoint, jwt_token)

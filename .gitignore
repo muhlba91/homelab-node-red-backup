@@ -196,3 +196,4 @@ pyrightconfig.json
 
 backup.json
 .flakeheaven_cache/
+.ruff_cache/
