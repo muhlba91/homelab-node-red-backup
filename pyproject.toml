@@ -31,7 +31,7 @@ classifiers = [
 homelab-node-red-backup = "homelab_node_red_backup.__main__:main"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 click = "^8.1.3"
 requests = "^2.31.0"
 
