@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "homelab-node-red-backup"
-version = "1.4.2"
+version = "2.0.0"
 description = "Backup and Restore for Node-RED."
 license = "MIT"
 authors = [
