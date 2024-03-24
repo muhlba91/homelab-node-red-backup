@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.0.1](https://github.com/muhlba91/homelab-node-red-backup/compare/v2.0.0...v2.0.1) (2024-03-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout digest to 9bb5618 ([682313f](https://github.com/muhlba91/homelab-node-red-backup/commit/682313f73d25f524f649033ff88bbccae263ff42))
+* **deps:** update actions/checkout digest to b4ffde6 ([3844dfa](https://github.com/muhlba91/homelab-node-red-backup/commit/3844dfa195ea9d54909efe161fc5fbdc60182361))
+* **deps:** update dependency pre-commit to v3.6.2 ([1707216](https://github.com/muhlba91/homelab-node-red-backup/commit/1707216e0299354c85c6251f39b2245882d2f62e))
+* **deps:** update dependency pre-commit to v3.7.0 ([97ae295](https://github.com/muhlba91/homelab-node-red-backup/commit/97ae295921813f0b0c1bd218d410bd1ebd90d6ef))
+* **deps:** update dependency ruff to ^0.3.0 ([22dae36](https://github.com/muhlba91/homelab-node-red-backup/commit/22dae36eab95dfca5c60f05218b381db094c4473))
+* **deps:** update dependency ruff to v0.3.1 ([460d377](https://github.com/muhlba91/homelab-node-red-backup/commit/460d377934ab191e5a84a21ca2a4d57df48c6b11))
+* **deps:** update dependency ruff to v0.3.2 ([15993e2](https://github.com/muhlba91/homelab-node-red-backup/commit/15993e2c62434cefb648b258ed666b9eac83d532))
+* **deps:** update dependency ruff to v0.3.3 ([cdfc057](https://github.com/muhlba91/homelab-node-red-backup/commit/cdfc0576f0caf4b80bb65e8d3096459e37451a67))
+* **deps:** update dependency ruff to v0.3.4 ([c0211e2](https://github.com/muhlba91/homelab-node-red-backup/commit/c0211e20df15a538e4679acf30e34937ad7e598e))
+
 ## [2.0.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v1.4.2...v2.0.0) (2024-02-18)
 
 
