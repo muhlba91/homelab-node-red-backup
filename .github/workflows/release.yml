@@ -9,8 +9,7 @@ on:
 
 permissions:
   contents: read
-  pull-requests: read
-
+  
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -22,7 +21,11 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        with:
+          egress-policy: audit
+
+      - uses: google-github-actions/release-please-action@e4dc86ba9405554aeba3c6bb2d169500e7d3b4ee # v4.1.1
         id: release
 
   publish:
@@ -40,26 +43,26 @@ jobs:
         python-version: ["3.12"]
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
           fetch-depth: 0
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+        with:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
+      - run: |
           python -m pip install build
 
-      - name: Build a binary wheel and a source tarball
-        run: |
+      - run: |
           python -m build
 
-      - name: Publish release distribution to PyPi
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: pypa/gh-action-pypi-publish@f7600683efdcb7656dec5b29656edb7bc586e597 # release/v1
         with:
           skip-existing: true
