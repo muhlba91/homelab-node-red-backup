@@ -1,5 +1,31 @@
 # Changelog
 
+## [2.1.1](https://github.com/muhlba91/homelab-node-red-backup/compare/v2.1.0...v2.1.1) (2025-09-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/dependency-review-action action to v4.7.2 ([045813a](https://github.com/muhlba91/homelab-node-red-backup/commit/045813aa098c56a8aaa2c312a2e426b40a8b79de))
+* **deps:** update actions/dependency-review-action action to v4.7.3 ([8507341](https://github.com/muhlba91/homelab-node-red-backup/commit/85073414ada77b3237ae3842f706a748eeaa122d))
+* **deps:** update actions/dependency-review-action action to v4.8.0 ([52f5b2e](https://github.com/muhlba91/homelab-node-red-backup/commit/52f5b2e10c4b1ff6c664331ebb652518d983aad2))
+* **deps:** update actions/setup-python action to v6 ([0172194](https://github.com/muhlba91/homelab-node-red-backup/commit/0172194c520f150f810634d2fe544bed31845bd2))
+* **deps:** update dependency click to v8.3.0 ([0e2bbf7](https://github.com/muhlba91/homelab-node-red-backup/commit/0e2bbf755f6f3ebb00d81ee4d160d0f10ac3076c))
+* **deps:** update dependency requests to v2.32.5 ([7d38489](https://github.com/muhlba91/homelab-node-red-backup/commit/7d384899afba6051b74b517484c0c39e258315bf))
+* **deps:** update dependency ruff to ^0.13.0 ([4e73c76](https://github.com/muhlba91/homelab-node-red-backup/commit/4e73c76aa104b1ba38dd2f1771930b4572810f34))
+* **deps:** update dependency ruff to v0.12.10 ([058e1e0](https://github.com/muhlba91/homelab-node-red-backup/commit/058e1e02cac52194eb20bdfc2e2cd8a2e9d1dce9))
+* **deps:** update dependency ruff to v0.12.11 ([04467f5](https://github.com/muhlba91/homelab-node-red-backup/commit/04467f5c140c0a5f95ba3201559ae20062344c42))
+* **deps:** update dependency ruff to v0.12.12 ([fad56d3](https://github.com/muhlba91/homelab-node-red-backup/commit/fad56d30299204eab543abed54cd98bea41dc78f))
+* **deps:** update dependency ruff to v0.13.1 ([5324d33](https://github.com/muhlba91/homelab-node-red-backup/commit/5324d3394c42ac24848fc90a25463741a1f92550))
+* **deps:** update dependency ruff to v0.13.2 ([d11540c](https://github.com/muhlba91/homelab-node-red-backup/commit/d11540cec183ece62d839affea328de3450eb6ad))
+* **deps:** update github/codeql-action action to v3.29.10 ([d484359](https://github.com/muhlba91/homelab-node-red-backup/commit/d484359def11357a14fa9d52f0e434977bdc6f8d))
+* **deps:** update github/codeql-action action to v3.29.11 ([8812c45](https://github.com/muhlba91/homelab-node-red-backup/commit/8812c455859a919d5a23ea7d22a07a2a2856e8ed))
+* **deps:** update github/codeql-action action to v3.30.1 ([fc4cfc4](https://github.com/muhlba91/homelab-node-red-backup/commit/fc4cfc4641668515ec82adda51833a7af215853d))
+* **deps:** update github/codeql-action action to v3.30.2 ([dfd2f71](https://github.com/muhlba91/homelab-node-red-backup/commit/dfd2f711ff36533a88c4a4f1b55adf824272ff30))
+* **deps:** update github/codeql-action action to v3.30.3 ([edbe279](https://github.com/muhlba91/homelab-node-red-backup/commit/edbe2795e03e0838f017313fe241f2c28d73c2c0))
+* **deps:** update github/codeql-action action to v3.30.4 ([4e68719](https://github.com/muhlba91/homelab-node-red-backup/commit/4e68719c1fce00f73f84e350d1005f058dcaeefe))
+* **deps:** update github/codeql-action action to v3.30.5 ([4589a96](https://github.com/muhlba91/homelab-node-red-backup/commit/4589a96e261fd17699c3c2abd54099dd8f9a74ee))
+* **deps:** update step-security/harden-runner action to v2.13.1 ([9434d5d](https://github.com/muhlba91/homelab-node-red-backup/commit/9434d5d1b95c77c09dbd9afaa4c7f870e92ec48b))
+
 ## [2.1.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v2.0.0...v2.1.0) (2025-08-14)
 
 
