@@ -25,7 +25,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: googleapis/release-please-action@f3969c04a4ec81d7a9aa4010d84ae6a7602f86a7 # v4.1.1
+      - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
         id: release
 
   publish:
