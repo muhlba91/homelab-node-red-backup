@@ -11,7 +11,7 @@ authors = [
     "Daniel Muehlbachler-Pietrzykowski <daniel.muehlbachler@niftyside.io>",
 ]
 readme = "README.md"
-repository = "https://github.com/muhlba91/onyx-client"
+repository = "https://github.com/muhlba91/homelab-node-red-backup"
 keywords = ["node-red", "homelab"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -26,10 +26,35 @@ classifiers = [
 homelab-node-red-backup = "homelab_node_red_backup.__main__:main"
 
 [tool.poetry.dependencies]
-python = ">=3.13"
+python = ">=3.13,<4.0"
 click = "^8.1.3"
 requests = "^2.31.0"
 
 [tool.poetry.group.dev.dependencies]
+pytest = "^9.0.0"
+pytest-cov = { extras = ["toml"], version = "^7.0.0" }
+coverage = { extras = ["toml"], version = "^7.0.0" }
 pre-commit = "^4.0.0"
 ruff = "^0.15.0"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--strict-markers --cov=homelab_node_red_backup"
+testpaths = ["tests"]
+norecursedirs = [".git"]
+
+[tool.coverage.run]
+relative_files = true
+source = ["homelab_node_red_backup"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplemented()",
+    "if __name__ == .__main__.:",
+    "main()",
+    "parser\\..",
+    "argparse\\..",
+]
+fail_under = 95
+show_missing = true

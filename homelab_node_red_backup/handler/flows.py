@@ -2,7 +2,6 @@
 import requests
 from typing import Optional
 import click
-import json
 from requests.exceptions import RequestException
 
 
@@ -25,7 +24,7 @@ def get_flows(endpoint: str, jwt_token: Optional[str]) -> dict:
             raise click.Abort()
         try:
             data = flows_request.json()
-        except json.JSONDecodeError as err:
+        except ValueError as err:
             click.echo(f"Invalid JSON from Node-RED flows endpoint: {err}")
             raise click.Abort()
         if isinstance(data, list):
