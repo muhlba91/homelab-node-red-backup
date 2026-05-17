@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/github/license/muhlba91/homelab-node-red-backup?style=for-the-badge)](LICENSE)
 [![](https://img.shields.io/github/actions/workflow/status/muhlba91/homelab-node-red-backup/verify.yml?style=for-the-badge)](https://github.com/muhlba91/homelab-node-red-backup/actions/workflows/verify.yml)
+[![](https://img.shields.io/coveralls/github/muhlba91/homelab-node-red-backup?style=for-the-badge)](https://github.com/muhlba91/homelab-node-red-backup/)
 [![](https://api.scorecard.dev/projects/github.com/muhlba91/homelab-node-red-backup/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/homelab-node-red-backup)
 [![](https://img.shields.io/pypi/pyversions/homelab-node-red-backup?style=for-the-badge)](https://pypi.org/project/homelab-node-red-backup/)
 [![](https://img.shields.io/pypi/v/homelab-node-red-backup?style=for-the-badge)](https://pypi.org/project/homelab-node-red-backup/)
