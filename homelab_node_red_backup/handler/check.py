@@ -1,12 +1,13 @@
 """Check Handler."""
-from homelab_node_red_backup.handler.flows import get_flows
-from typing import Optional
+
 import click
 from requests.exceptions import RequestException
 
+from homelab_node_red_backup.handler.flows import get_flows
+
 
 def data_exists(
-    endpoint: str, jwt_token: Optional[str], flows: Optional[dict] = None
+    endpoint: str, jwt_token: str | None, flows: dict | None = None
 ) -> bool:
     """Checks if data exists.
 
@@ -28,6 +29,6 @@ def data_exists(
     except click.Abort:
         # intentional aborts should propagate unchanged
         raise
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001
         click.echo(f"Could not make request to Node-RED: {error}")
         raise click.Abort()

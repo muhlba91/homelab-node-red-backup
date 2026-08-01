@@ -1,17 +1,18 @@
 """Backup and Restore CLI."""
-import click
 import json
-from typing import Optional
+import sys
+
+import click
+
 from homelab_node_red_backup.handler.backup import create_backup
 from homelab_node_red_backup.handler.check import data_exists
-from homelab_node_red_backup.handler.restore import restore_backup
 from homelab_node_red_backup.handler.flows import get_flows
+from homelab_node_red_backup.handler.restore import restore_backup
 
 
 @click.group(chain=True)
 def main():
     """CLI Entrypoint"""
-    pass
 
 
 @main.command(help="Checks if data exists. Return code is not 0 if no data exists!")
@@ -19,7 +20,7 @@ def main():
 @click.option(
     "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
 )
-def check(endpoint: str, jwt_token: Optional[str]):
+def check(endpoint: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to check for Node-RED configuration "
         + f"(JWT enabled: {jwt_token is not None})."
@@ -27,7 +28,7 @@ def check(endpoint: str, jwt_token: Optional[str]):
 
     checkpoint = data_exists(endpoint, jwt_token)
     click.echo(f"Data exists: {checkpoint}")
-    exit(not checkpoint)
+    sys.exit(not checkpoint)
 
 
 @main.command(help="Backups the flows to the given file.")
@@ -36,7 +37,7 @@ def check(endpoint: str, jwt_token: Optional[str]):
 @click.option(
     "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
 )
-def backup(endpoint: str, file: str, jwt_token: Optional[str]):
+def backup(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to backup Node-RED configuration to {file} "
         + f"(JWT enabled: {jwt_token is not None})."
@@ -54,7 +55,7 @@ def backup(endpoint: str, file: str, jwt_token: Optional[str]):
 @click.option(
     "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
 )
-def restore(endpoint: str, file: str, jwt_token: Optional[str]):
+def restore(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to restore {file} to Node-RED "
         + f"(JWT enabled: {jwt_token is not None})."
@@ -73,7 +74,7 @@ def restore(endpoint: str, file: str, jwt_token: Optional[str]):
 @click.option(
     "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
 )
-def auto(endpoint: str, file: str, jwt_token: Optional[str]):
+def auto(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to auto backup/restore from/to {file} from/to Node-RED "
         + f"(JWT enabled: {jwt_token is not None})."

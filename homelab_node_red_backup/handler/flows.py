@@ -1,11 +1,11 @@
 """Backup Handler."""
-import requests
-from typing import Optional
+
 import click
+import requests
 from requests.exceptions import RequestException
 
 
-def get_flows(endpoint: str, jwt_token: Optional[str]) -> dict:
+def get_flows(endpoint: str, jwt_token: str | None) -> dict:
     """Gets the existing flows and normalizes output to {'flows': [...]}.
 
     Node-RED may return either a list of flows or a dict with key 'flows'.

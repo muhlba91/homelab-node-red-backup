@@ -1,12 +1,12 @@
 """Restore Handler."""
-import requests
-from typing import Optional
-import click
-from requests.exceptions import RequestException
 import json
 
+import click
+import requests
+from requests.exceptions import RequestException
 
-def restore_backup(endpoint: str, jwt_token: Optional[str], flows: str | dict | list) -> None:
+
+def restore_backup(endpoint: str, jwt_token: str | None, flows: str | dict | list) -> None:
     """Restores from a backup.
 
     `flows` may be provided as a dict or list (already parsed), or as a JSON string
@@ -38,6 +38,6 @@ def restore_backup(endpoint: str, jwt_token: Optional[str], flows: str | dict | 
     except click.Abort:
         # intentional aborts should propagate unchanged
         raise
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001
         click.echo(f"Could not make request to Node-RED: {error}")
         raise click.Abort()

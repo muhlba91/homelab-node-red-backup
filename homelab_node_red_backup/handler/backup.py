@@ -1,17 +1,18 @@
 """Backup Handler."""
 import os
-import requests
-from homelab_node_red_backup.handler.flows import get_flows
-from typing import Optional, List
+
 import click
+import requests
 from requests.exceptions import RequestException
+
+from homelab_node_red_backup.handler.flows import get_flows
 
 # Credential node types configurable via environment variable CREDENTIAL_NODES
 # Format: comma-separated values, e.g. "server,telegram bot"
 _default_credential_nodes = ["server", "telegram bot"]
 
 
-def get_credential_nodes() -> List[str]:
+def get_credential_nodes() -> list[str]:
     """Return credential node types from environment or defaults.
 
     Reads CREDENTIAL_NODES on each call so tests can change the env without
@@ -24,7 +25,7 @@ def get_credential_nodes() -> List[str]:
 
 
 def create_backup(
-    endpoint: str, jwt_token: Optional[str], flows: dict | list | None = None
+    endpoint: str, jwt_token: str | None, flows: dict | list | None = None
 ) -> dict:
     """Creates a backup JSON.
 
@@ -52,12 +53,12 @@ def create_backup(
     except click.Abort:
         # intentional aborts should propagate unchanged
         raise
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001
         click.echo(f"Could not make request to Node-RED: {error}")
         raise click.Abort()
 
 
-def _get_credentials(endpoint: str, jwt_token: Optional[str], flows: dict) -> dict:
+def _get_credentials(endpoint: str, jwt_token: str | None, flows: dict) -> dict:
     """Gets the credentials for flows.
 
     Validates that nodes which require credentials contain both 'id' and 'type'. If a

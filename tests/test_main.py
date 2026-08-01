@@ -1,5 +1,7 @@
 import json
+
 import pytest
+
 from homelab_node_red_backup import __main__ as main_mod
 
 
