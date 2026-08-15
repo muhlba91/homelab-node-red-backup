@@ -29,7 +29,11 @@ def get_flows(endpoint: str, jwt_token: str | None) -> dict:
             raise click.Abort()
         if isinstance(data, list):
             return {"flows": data}
-        if isinstance(data, dict) and "flows" in data and isinstance(data["flows"], list):
+        if (
+            isinstance(data, dict)
+            and "flows" in data
+            and isinstance(data["flows"], list)
+        ):
             return data
         click.echo("Unexpected flows data format from Node-RED")
         raise click.Abort()

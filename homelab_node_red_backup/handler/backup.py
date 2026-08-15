@@ -1,4 +1,5 @@
 """Backup Handler."""
+
 import os
 
 import click
@@ -74,7 +75,9 @@ def _get_credentials(endpoint: str, jwt_token: str | None, flows: dict) -> dict:
         node_id = node.get("id")
         if node_type in get_credential_nodes():
             if not node_type or not node_id:
-                click.echo(f"Flow node missing 'id' or 'type' for credential lookup: {node}")
+                click.echo(
+                    f"Flow node missing 'id' or 'type' for credential lookup: {node}"
+                )
                 raise click.Abort()
             nodes.append({"id": node_id, "type": node_type})
     try:
@@ -97,7 +100,9 @@ def _get_credentials(endpoint: str, jwt_token: str | None, flows: dict) -> dict:
             try:
                 credentials[node["id"]] = resp.json()
             except ValueError as err:
-                click.echo(f"Invalid JSON when fetching credentials for node {node['id']}: {err}")
+                click.echo(
+                    f"Invalid JSON when fetching credentials for node {node['id']}: {err}"
+                )
                 raise click.Abort()
         return credentials
     except RequestException as err:

@@ -34,6 +34,7 @@ class TestRestore:
     def test_parsed_json_not_object_or_array_raises(self):
         """restore_backup aborts when parsed JSON is not an object or array (e.g., a string)."""
         import json as _json
+
         # a valid JSON string that parses to a string, not an object/array
         with pytest.raises(click.Abort):
             restore.restore_backup("http://example", None, _json.dumps("a string"))
@@ -41,7 +42,10 @@ class TestRestore:
     def test_abort_propagates_without_generic_message(self, monkeypatch):
         """Intentional click.Abort (invalid JSON/format) should not be re-wrapped by generic handler."""
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.restore.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.restore.click.echo",
+            lambda m: messages.append(m),
+        )
         with pytest.raises(click.Abort):
             # invalid JSON causes an intentional abort inside restore_backup
             restore.restore_backup("http://example", None, "not-a-json")
@@ -50,7 +54,10 @@ class TestRestore:
     def test_generic_exception_is_wrapped(self, monkeypatch):
         """Non-network exceptions should be wrapped with a generic abort and message."""
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.restore.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.restore.click.echo",
+            lambda m: messages.append(m),
+        )
 
         def fake_post(url, json=None, headers=None):
             raise ValueError("unexpected")

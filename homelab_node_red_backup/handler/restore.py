@@ -1,4 +1,5 @@
 """Restore Handler."""
+
 import json
 
 import click
@@ -6,7 +7,9 @@ import requests
 from requests.exceptions import RequestException
 
 
-def restore_backup(endpoint: str, jwt_token: str | None, flows: str | dict | list) -> None:
+def restore_backup(
+    endpoint: str, jwt_token: str | None, flows: str | dict | list
+) -> None:
     """Restores from a backup.
 
     `flows` may be provided as a dict or list (already parsed), or as a JSON string
@@ -18,14 +21,18 @@ def restore_backup(endpoint: str, jwt_token: str | None, flows: str | dict | lis
         headers["Authorization"] = f"Bearer {jwt_token}"
     try:
         try:
-            json_payload = flows if isinstance(flows, (dict, list)) else json.loads(flows)
+            json_payload = (
+                flows if isinstance(flows, (dict, list)) else json.loads(flows)
+            )
         except (TypeError, json.JSONDecodeError):
             click.echo("Provided flows payload is not valid JSON or serializable")
             raise click.Abort()
         if not isinstance(json_payload, (dict, list)):
             click.echo("Provided flows payload must be a JSON object or array")
             raise click.Abort()
-        request = requests.post(f"{endpoint}/flows/", json=json_payload, headers=headers)
+        request = requests.post(
+            f"{endpoint}/flows/", json=json_payload, headers=headers
+        )
         if not request.ok:
             click.echo(
                 f"Could not push flows to Node-RED: {request.status_code}, "

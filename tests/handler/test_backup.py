@@ -134,11 +134,13 @@ class TestBackup:
         """create_backup aborts when a flow node is not a dict (malformed flow)."""
         flows = {"flows": ["not-a-dict"]}
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.backup.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.backup.click.echo",
+            lambda m: messages.append(m),
+        )
         with pytest.raises(click.Abort):
             backup.create_backup("http://x", None, flows)
         assert any("Invalid flow node format" in m for m in messages)
-
 
     def test_get_credential_nodes_parses_env(self, monkeypatch):
         """get_credential_nodes parses comma-separated env var and strips parts."""
@@ -173,7 +175,10 @@ class TestBackup:
             lambda e, j: (_ for _ in ()).throw(RequestException("net")),
         )
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.backup.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.backup.click.echo",
+            lambda m: messages.append(m),
+        )
         with pytest.raises(click.Abort):
             backup.create_backup("http://x", None, None)
         assert any("Network error when accessing Node-RED" in m for m in messages)
@@ -185,15 +190,21 @@ class TestBackup:
             lambda e, j: (_ for _ in ()).throw(ValueError("boom")),
         )
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.backup.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.backup.click.echo",
+            lambda m: messages.append(m),
+        )
         with pytest.raises(click.Abort):
             backup.create_backup("http://x", None, None)
         assert any("Could not make request to Node-RED" in m for m in messages)
+
     def test_abort_propagates_without_generic_message(self, monkeypatch):
         """Intentional click.Abort (invalid flows) should not be re-wrapped by generic handler."""
         messages = []
-        monkeypatch.setattr("homelab_node_red_backup.handler.backup.click.echo", lambda m: messages.append(m))
+        monkeypatch.setattr(
+            "homelab_node_red_backup.handler.backup.click.echo",
+            lambda m: messages.append(m),
+        )
         with pytest.raises(click.Abort):
             backup.create_backup("http://x", None, {"notflows": 123})
         assert not any("Could not make request to Node-RED" in m for m in messages)
-

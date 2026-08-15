@@ -26,6 +26,7 @@ class TestFlows:
 
     def test_get_flows_list_response(self, monkeypatch):
         """get_flows returns a dict with a 'flows' list when endpoint returns a list."""
+
         def fake_get(url, headers=None):
             return _Response(ok=True, payload=[{"id": "1"}])
 
@@ -38,6 +39,7 @@ class TestFlows:
 
     def test_get_flows_dict_response(self, monkeypatch):
         """get_flows accepts dict payload with 'flows' key and returns it unchanged."""
+
         def fake_get(url, headers=None):
             return _Response(ok=True, payload={"flows": [{"id": "x"}]})
 
@@ -47,6 +49,7 @@ class TestFlows:
 
     def test_get_flows_bad_json_raises(self, monkeypatch):
         """get_flows aborts when the response body is invalid JSON."""
+
         def fake_get(url, headers=None):
             return _Response(ok=True, json_exc=json.JSONDecodeError("msg", "doc", 0))
 
@@ -56,6 +59,7 @@ class TestFlows:
 
     def test_get_flows_non_ok_raises(self, monkeypatch):
         """get_flows aborts when HTTP response is not OK."""
+
         def fake_get(url, headers=None):
             return _Response(ok=False, status_code=404, text="not found")
 
@@ -65,6 +69,7 @@ class TestFlows:
 
     def test_get_flows_request_exception_raises(self, monkeypatch):
         """get_flows aborts when requests.get raises a RequestException."""
+
         def fake_get(url, headers=None):
             raise RequestException("network")
 
@@ -74,6 +79,7 @@ class TestFlows:
 
     def test_get_flows_with_jwt_header_set(self, monkeypatch):
         """get_flows includes Authorization header when jwt is provided."""
+
         def fake_get(url, headers=None):
             assert headers is not None and headers.get("Authorization") == "Bearer t"
             return _Response(ok=True, payload=[{"id": "1"}])
@@ -84,6 +90,7 @@ class TestFlows:
 
     def test_unexpected_flows_format_raises(self, monkeypatch):
         """get_flows aborts when payload is a dict but doesn't contain a list under 'flows'."""
+
         def fake_get(url, headers=None):
             return _Response(ok=True, payload={"notflows": 123})
 

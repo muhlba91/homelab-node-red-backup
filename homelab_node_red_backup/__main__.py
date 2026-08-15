@@ -1,4 +1,5 @@
 """Backup and Restore CLI."""
+
 import json
 import sys
 
