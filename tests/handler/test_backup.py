@@ -32,11 +32,11 @@ class TestBackup:
 
         flows = {"flows": [{"id": "n1", "type": "my-type"}]}
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             assert "credentials" in url
             return _Response(ok=True, payload={"secret": "s"})
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         res = backup.create_backup("http://example", None, flows)
         assert "credentials" in res
         assert res["credentials"]["n1"]["secret"] == "s"
@@ -48,10 +48,10 @@ class TestBackup:
 
         flows = {"flows": [{"id": "n2", "type": "t1"}]}
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             return _Response(ok=False, status_code=500, text="error")
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         with pytest.raises(click.Abort):
             backup.create_backup("http://example", None, flows)
 
@@ -62,11 +62,11 @@ class TestBackup:
 
         flows = {"flows": [{"id": "s1", "type": "server"}]}
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             assert "credentials" in url
             return _Response(ok=True, payload={"k": "v"})
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         res = backup.create_backup("http://example", None, flows)
         assert res["credentials"]["s1"]["k"] == "v"
 
@@ -77,10 +77,10 @@ class TestBackup:
 
         flows = {"flows": [{"id": "njson", "type": "tjson"}]}
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             return _Response(ok=True, json_exc=json.JSONDecodeError("msg", "doc", 0))
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         with pytest.raises(click.Abort):
             backup.create_backup("http://example", None, flows)
 
@@ -88,11 +88,11 @@ class TestBackup:
         """create_backup accepts flows as a list and returns expected structure."""
         flows_list = [{"id": "l1", "type": "server"}]
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             assert "credentials" in url
             return _Response(ok=True, payload={"cred": "v"})
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         res = backup.create_backup("http://example", None, flows_list)
         assert res["flows"][0]["id"] == "l1"
         assert res["credentials"]["l1"]["cred"] == "v"
@@ -103,12 +103,12 @@ class TestBackup:
 
         flows = {"flows": [{"id": "s2", "type": "server"}]}
 
-        def fake_get(url, headers=None):
-            assert headers is not None and "Authorization" in headers
-            assert headers["Authorization"] == "Bearer mytoken"
+        def fake_get(self, url, *args, **kwargs):
+            assert self.headers is not None and "Authorization" in self.headers
+            assert self.headers["Authorization"] == "Bearer mytoken"
             return _Response(ok=True, payload={"k": "v"})
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         res = backup.create_backup("http://example", "mytoken", flows)
         assert res["credentials"]["s2"]["k"] == "v"
 
@@ -161,10 +161,10 @@ class TestBackup:
 
         flows = {"flows": [{"id": "n1", "type": "server"}]}
 
-        def fake_get(url, headers=None):
+        def fake_get(self, url, *args, **kwargs):
             raise RequestException("network fail")
 
-        monkeypatch.setattr("requests.get", fake_get)
+        monkeypatch.setattr("requests.Session.get", fake_get)
         with pytest.raises(click.Abort):
             backup.create_backup("http://x", None, flows)
 

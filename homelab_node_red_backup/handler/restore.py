@@ -6,6 +6,8 @@ import click
 import requests
 from requests.exceptions import RequestException
 
+DEFAULT_TIMEOUT = 30
+
 
 def restore_backup(
     endpoint: str, jwt_token: str | None, flows: str | dict | list
@@ -31,7 +33,10 @@ def restore_backup(
             click.echo("Provided flows payload must be a JSON object or array")
             raise click.Abort()
         request = requests.post(
-            f"{endpoint}/flows/", json=json_payload, headers=headers
+            f"{endpoint}/flows/",
+            json=json_payload,
+            headers=headers,
+            timeout=DEFAULT_TIMEOUT,
         )
         if not request.ok:
             click.echo(

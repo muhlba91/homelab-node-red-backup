@@ -16,11 +16,28 @@ def main():
     """CLI Entrypoint"""
 
 
+def common_options(func):
+    """Decorator to apply common endpoint and jwt-token CLI options."""
+    func = click.option(
+        "--jwt-token",
+        "-jwt",
+        type=str,
+        required=False,
+        help="JWT Token for authentication",
+    )(func)
+    func = click.option(
+        "--endpoint", "-e", type=str, required=True, help="Node-RED endpoint"
+    )(func)
+    return func
+
+
+def file_option(help_text: str):
+    """Decorator to apply file option."""
+    return click.option("--file", "-f", type=str, required=True, help=help_text)
+
+
 @main.command(help="Checks if data exists. Return code is not 0 if no data exists!")
-@click.option("--endpoint", "-e", type=str, required=True, help="Node-RED endpoint")
-@click.option(
-    "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
-)
+@common_options
 def check(endpoint: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to check for Node-RED configuration "
@@ -33,29 +50,23 @@ def check(endpoint: str, jwt_token: str | None):
 
 
 @main.command(help="Backups the flows to the given file.")
-@click.option("--endpoint", "-e", type=str, required=True, help="Node-RED endpoint")
-@click.option("--file", "-f", type=str, required=True, help="Output JSON file")
-@click.option(
-    "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
-)
+@common_options
+@file_option("Output JSON file")
 def backup(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to backup Node-RED configuration to {file} "
         + f"(JWT enabled: {jwt_token is not None})."
     )
 
-    backup = create_backup(endpoint, jwt_token)
+    backup_data = create_backup(endpoint, jwt_token)
     with open(file, "w") as outfile:
-        json.dump(backup, outfile, indent=2)
+        json.dump(backup_data, outfile, indent=2)
     click.echo("Backup created successfully.")
 
 
 @main.command(help="Restores flows from the given file.")
-@click.option("--endpoint", "-e", type=str, required=True, help="Node-RED endpoint")
-@click.option("--file", "-f", type=str, required=True, help="Output JSON file")
-@click.option(
-    "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
-)
+@common_options
+@file_option("Input JSON file")
 def restore(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to restore {file} to Node-RED "
@@ -70,11 +81,8 @@ def restore(endpoint: str, file: str, jwt_token: str | None):
 @main.command(
     help="Backups to or restores from the given file depending on whether data exists."
 )
-@click.option("--endpoint", "-e", type=str, required=True, help="Node-RED endpoint")
-@click.option("--file", "-f", type=str, required=True, help="Output JSON file")
-@click.option(
-    "--jwt-token", "-jwt", type=str, required=False, help="JWT Token for authentication"
-)
+@common_options
+@file_option("Output/Input JSON file")
 def auto(endpoint: str, file: str, jwt_token: str | None):
     click.echo(
         f"Using {endpoint} to auto backup/restore from/to {file} from/to Node-RED "
@@ -83,7 +91,9 @@ def auto(endpoint: str, file: str, jwt_token: str | None):
 
     flows = get_flows(endpoint, jwt_token)
     if data_exists(endpoint, jwt_token, flows):
-        create_backup(endpoint, jwt_token, flows)
+        backup_data = create_backup(endpoint, jwt_token, flows)
+        with open(file, "w") as outfile:
+            json.dump(backup_data, outfile, indent=2)
         click.echo("Created backup successfully.")
     else:
         with open(file, "r") as backup:

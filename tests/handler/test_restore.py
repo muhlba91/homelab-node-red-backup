@@ -21,7 +21,7 @@ class _Response:
 
 class TestRestore:
     def test_accepts_dict(self, monkeypatch):
-        def fake_post(url, json=None, headers=None):
+        def fake_post(url, *args, **kwargs):
             return _Response(ok=True)
 
         monkeypatch.setattr("requests.post", fake_post)
@@ -59,7 +59,7 @@ class TestRestore:
             lambda m: messages.append(m),
         )
 
-        def fake_post(url, json=None, headers=None):
+        def fake_post(url, *args, **kwargs):
             raise ValueError("unexpected")
 
         monkeypatch.setattr("requests.post", fake_post)
@@ -68,7 +68,7 @@ class TestRestore:
         assert any("Could not make request to Node-RED" in m for m in messages)
 
     def test_post_non_ok_raises(self, monkeypatch):
-        def fake_post(url, json=None, headers=None):
+        def fake_post(url, *args, **kwargs):
             return _Response(ok=False, status_code=500, text="err")
 
         monkeypatch.setattr("requests.post", fake_post)
@@ -76,7 +76,7 @@ class TestRestore:
             restore.restore_backup("http://example", None, {"flows": []})
 
     def test_request_exception_raises(self, monkeypatch):
-        def fake_post(url, json=None, headers=None):
+        def fake_post(url, *args, **kwargs):
             raise RequestException("boom")
 
         monkeypatch.setattr("requests.post", fake_post)
@@ -84,7 +84,8 @@ class TestRestore:
             restore.restore_backup("http://example", None, {"flows": []})
 
     def test_jwt_sets_header(self, monkeypatch):
-        def fake_post(url, json=None, headers=None):
+        def fake_post(url, *args, **kwargs):
+            headers = kwargs.get("headers")
             assert headers is not None and headers.get("Authorization") == "Bearer tok"
             return _Response(ok=True)
 

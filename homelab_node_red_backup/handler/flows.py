@@ -4,6 +4,8 @@ import click
 import requests
 from requests.exceptions import RequestException
 
+DEFAULT_TIMEOUT = 30
+
 
 def get_flows(endpoint: str, jwt_token: str | None) -> dict:
     """Gets the existing flows and normalizes output to {'flows': [...]}.
@@ -15,7 +17,9 @@ def get_flows(endpoint: str, jwt_token: str | None) -> dict:
     if jwt_token is not None:
         headers["Authorization"] = f"Bearer {jwt_token}"
     try:
-        flows_request = requests.get(f"{endpoint}/flows/", headers=headers)
+        flows_request = requests.get(
+            f"{endpoint}/flows/", headers=headers, timeout=DEFAULT_TIMEOUT
+        )
         if not flows_request.ok:
             click.echo(
                 f"Could not get flows from Node-RED: {flows_request.status_code}, "

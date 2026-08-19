@@ -53,6 +53,7 @@ class TestMain:
 
     def test_auto_calls_create_backup_when_data_exists(self, monkeypatch, tmp_path):
         flows = {"flows": [{"id": "n"}]}
+        fake_backup = {"flows": [{"id": "n"}], "credentials": {}}
         monkeypatch.setattr(
             "homelab_node_red_backup.__main__.get_flows", lambda e, j: flows
         )
@@ -61,14 +62,22 @@ class TestMain:
         )
 
         called = {}
+
+        def fake_create_backup(e, j, f=None):
+            called["created"] = True
+            return fake_backup
+
         monkeypatch.setattr(
             "homelab_node_red_backup.__main__.create_backup",
-            lambda e, j, f=None: called.setdefault("created", True),
+            fake_create_backup,
         )
 
         out = tmp_path / "auto.json"
         main_mod.auto.callback("http://x", str(out), None)
         assert "created" in called
+        with open(out, "r") as f:
+            data = json.load(f)
+        assert data == fake_backup
 
     def test_auto_calls_restore_when_no_data(self, monkeypatch, tmp_path):
         flows = {"flows": []}

@@ -8,6 +8,8 @@ from requests.exceptions import RequestException
 
 from homelab_node_red_backup.handler.flows import get_flows
 
+DEFAULT_TIMEOUT = 30
+
 # Credential node types configurable via environment variable CREDENTIAL_NODES
 # Format: comma-separated values, e.g. "server,telegram bot"
 _default_credential_nodes = ["server", "telegram bot"]
@@ -85,25 +87,27 @@ def _get_credentials(endpoint: str, jwt_token: str | None, flows: dict) -> dict:
         if jwt_token is not None:
             headers["Authorization"] = f"Bearer {jwt_token}"
         credentials = {}
-        for node in nodes:
-            url = (
-                f"{endpoint}/credentials/"
-                + f"{node['type'].replace(' ', '-')}/"
-                + f"{node['id']}"
-            )
-            resp = requests.get(url, headers=headers)
-            if not resp.ok:
-                click.echo(
-                    f"Could not get credentials for node {node['id']}: {resp.status_code}, {resp.text}"
+        with requests.Session() as session:
+            session.headers.update(headers)
+            for node in nodes:
+                url = (
+                    f"{endpoint}/credentials/"
+                    + f"{node['type'].replace(' ', '-')}/"
+                    + f"{node['id']}"
                 )
-                raise click.Abort()
-            try:
-                credentials[node["id"]] = resp.json()
-            except ValueError as err:
-                click.echo(
-                    f"Invalid JSON when fetching credentials for node {node['id']}: {err}"
-                )
-                raise click.Abort()
+                resp = session.get(url, timeout=DEFAULT_TIMEOUT)
+                if not resp.ok:
+                    click.echo(
+                        f"Could not get credentials for node {node['id']}: {resp.status_code}, {resp.text}"
+                    )
+                    raise click.Abort()
+                try:
+                    credentials[node["id"]] = resp.json()
+                except ValueError as err:
+                    click.echo(
+                        f"Invalid JSON when fetching credentials for node {node['id']}: {err}"
+                    )
+                    raise click.Abort()
         return credentials
     except RequestException as err:
         click.echo(f"Error performing request to Node-RED: {err}")
