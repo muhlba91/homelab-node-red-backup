@@ -1,5 +1,34 @@
 # Changelog
 
+## [3.0.1](https://github.com/muhlba91/homelab-node-red-backup/compare/v3.0.0...v3.0.1) (2026-10-10)
+
+
+### Miscellaneous Chores
+
+* **ci:** fix github workflow concurrency ([afae111](https://github.com/muhlba91/homelab-node-red-backup/commit/afae1119e05b86c06f63ff1022eee64cf5906a9e))
+* **deps:** update actions/upload-artifact action to v7.0.2 ([9420ab2](https://github.com/muhlba91/homelab-node-red-backup/commit/9420ab2bd963d2254d1c7f97265f9d9bad70c121))
+* **deps:** update dependency click to v8.5.0 ([411987d](https://github.com/muhlba91/homelab-node-red-backup/commit/411987d02bbc7302eeb2342334d1ff5a84f3fe42))
+* **deps:** update dependency coverage to v7.16.0 ([c85a6be](https://github.com/muhlba91/homelab-node-red-backup/commit/c85a6bed3ec68956389b2148f17c08d415676eff))
+* **deps:** update dependency coverage to v7.16.1 ([ef9e280](https://github.com/muhlba91/homelab-node-red-backup/commit/ef9e280e3bbd07a3e7422c0d975ff11184692de8))
+* **deps:** update dependency coverage to v7.16.2 ([0be44e9](https://github.com/muhlba91/homelab-node-red-backup/commit/0be44e9a0a03949ba55e698f3c58f92d426d2ec7))
+* **deps:** update dependency ruff to ^0.17.0 ([bbb845d](https://github.com/muhlba91/homelab-node-red-backup/commit/bbb845daa2c1f634187518d488fa5c78a7d4b6ac))
+* **deps:** update dependency ruff to v0.16.10 ([ff3cd1d](https://github.com/muhlba91/homelab-node-red-backup/commit/ff3cd1d30334665fbe06ff6b501a8d417cc1a512))
+* **deps:** update dependency ruff to v0.16.4 ([8902eda](https://github.com/muhlba91/homelab-node-red-backup/commit/8902eda4cf7d6b79d0f03c88249f3a52123c49cd))
+* **deps:** update dependency ruff to v0.16.5 ([a3de740](https://github.com/muhlba91/homelab-node-red-backup/commit/a3de7408a8c39d7bb23e556049c5b1aa56f60f9c))
+* **deps:** update dependency ruff to v0.16.6 ([13b8c68](https://github.com/muhlba91/homelab-node-red-backup/commit/13b8c6819249efbfcdc0e347796999bc1bcb57e4))
+* **deps:** update dependency ruff to v0.16.7 ([00e22ca](https://github.com/muhlba91/homelab-node-red-backup/commit/00e22ca277077325a63b3e36e478ce17942373e0))
+* **deps:** update dependency ruff to v0.16.8 ([e6485d8](https://github.com/muhlba91/homelab-node-red-backup/commit/e6485d87b4ca6b8686437fc175e9ce564e03c159))
+* **deps:** update dependency ruff to v0.16.9 ([5fdc138](https://github.com/muhlba91/homelab-node-red-backup/commit/5fdc138905c49459502c5253af76c088f1ec3264))
+* **deps:** update github/codeql-action action to v4.37.8 ([56e7fdb](https://github.com/muhlba91/homelab-node-red-backup/commit/56e7fdbce57aae230604042fd88031efb2f31fc1))
+* **deps:** update github/codeql-action action to v4.37.9 ([dcbe73c](https://github.com/muhlba91/homelab-node-red-backup/commit/dcbe73c7b8ce724e5524f1a9abcd49a8603fc000))
+* **deps:** update github/codeql-action action to v4.38.0 ([d8c0654](https://github.com/muhlba91/homelab-node-red-backup/commit/d8c0654f6ec7bec134ab3004ea6599b774a1514e))
+* **deps:** update github/codeql-action action to v4.38.1 ([9a0dd68](https://github.com/muhlba91/homelab-node-red-backup/commit/9a0dd682f124f9a1830eb4ee27acadf1020dc941))
+* **deps:** update github/codeql-action action to v4.38.2 ([795fc2a](https://github.com/muhlba91/homelab-node-red-backup/commit/795fc2ae98072580655ddc5637a88a0a6d2e0b30))
+* **deps:** update github/codeql-action action to v4.38.3 ([f67ef00](https://github.com/muhlba91/homelab-node-red-backup/commit/f67ef006a31e820beccc78acd13b1dc9cf763fde))
+* **deps:** update step-security/harden-runner action to v2.21.1 ([3751c9c](https://github.com/muhlba91/homelab-node-red-backup/commit/3751c9c49c85ac4df469584402491ca26ec9899d))
+* **deps:** update step-security/harden-runner action to v2.22.0 ([2ead55f](https://github.com/muhlba91/homelab-node-red-backup/commit/2ead55f4ae2cc413c1f1f301f7aff964347e01fd))
+* **deps:** update step-security/harden-runner action to v2.22.1 ([d834078](https://github.com/muhlba91/homelab-node-red-backup/commit/d8340786d173aec24e53705cea6aca367bf2c7c1))
+
 ## [3.0.0](https://github.com/muhlba91/homelab-node-red-backup/compare/v2.1.0...v3.0.0) (2026-08-19)
 
 
