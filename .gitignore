@@ -198,3 +198,6 @@ backup.json
 .flakeheaven_cache/
 .ruff_cache/
 .python-version
+
+# mise
+mise.local.toml

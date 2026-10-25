@@ -65,6 +65,10 @@ homelab-node-red-backup backup -e http://localhost:1880 -jwt <TOKEN> -f backup.j
 homelab-node-red-backup restore -e http://localhost:1880 -jwt <TOKEN> -f backup.json
 ```
 
+## Development
+
+Tool versions (Python, uv, Poetry) are managed with [mise](https://mise.jdx.dev): run `mise trust` and `mise install` once, then use the usual commands (`poetry install`, `poetry run pytest`).
+
 ---
 
 ## Supporting
