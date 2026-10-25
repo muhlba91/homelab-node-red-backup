@@ -3,10 +3,9 @@
 lockfile_version = 3
 
 [[tools."pipx:poetry"]]
-version = "2.4.1"
+version = "2.5.1"
 backend = "pipx:poetry"
-specifiers = ["2.4.1"]
-uv = { path = ".mise/locks/pipx-poetry/2.4.1~67ff1a72", digest = "sha256:86ab0d21dfcfd4be56d5754b9e6e973b2a51a5f211d2a3480ebf9ebc822f2a85" }
+specifiers = ["2.5.1"]
 
 [tools."pipx:poetry".options]
 python = "3.14"
