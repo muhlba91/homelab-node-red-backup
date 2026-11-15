@@ -8,7 +8,7 @@ version = "3.0.1"
 description = "Backup and Restore for Node-RED."
 license = "MIT"
 authors = [
-    "Daniel Muehlbachler-Pietrzykowski <daniel.muehlbachler@niftyside.io>",
+    "Daniel Muehlbachler-Pietrzykowski <dev@muehlbachler.io>",
 ]
 readme = "README.md"
 repository = "https://github.com/muhlba91/homelab-node-red-backup"
