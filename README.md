@@ -1,5 +1,8 @@
 # Homelab: Node-RED Backup & Restore
 
+> [!WARNING]
+> **This repository is deprecated!**
+
 [![](https://img.shields.io/github/license/muhlba91/homelab-node-red-backup?style=for-the-badge)](LICENSE)
 [![](https://img.shields.io/github/actions/workflow/status/muhlba91/homelab-node-red-backup/verify.yml?style=for-the-badge)](https://github.com/muhlba91/homelab-node-red-backup/actions/workflows/verify.yml)
 [![](https://img.shields.io/coveralls/github/muhlba91/homelab-node-red-backup?style=for-the-badge)](https://github.com/muhlba91/homelab-node-red-backup/)
